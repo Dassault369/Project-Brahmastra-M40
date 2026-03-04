@@ -28,3 +28,5 @@ key features:
 ​Multi-Axis Trajectory: Integrated a 3D coordinate system (X, Y, Z) to simulate realistic flight paths, including crossrange maneuvers and yaw adjustments.
 ​Advanced Visualization: Utilized Matplotlib's 3D toolkit to provide a 360-degree view of the missile's ascent, cruise, and terminal phases.
 ​Real-time Vector Analysis: Calculates velocity and acceleration across three dimensions, ensuring higher fidelity in interceptor avoidance scenarios.
+
+​💻 C-Language Implementation: > High-performance version of the simulation developed in C for embedded system logic, featuring real-time interceptor evasion.
