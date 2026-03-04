@@ -21,3 +21,10 @@ Objective: A Python-based advanced simulation of a Mach 40 hypersonic missile wi
 ​Precision Strike: Automated target locking system that ensures impact within a 5km radius of the designated zone.
 ​📊 Performance Analysis
 ​The simulation successfully demonstrates that at Mach 40, the missile can traverse vast distances while maintaining structural integrity through AI intervention. The transition from a flat-earth model to a global spherical model improved trajectory accuracy significantly.
+
+key features:
+
+​🌌 3D Spatial Dynamics (New in v5.0)
+​Multi-Axis Trajectory: Integrated a 3D coordinate system (X, Y, Z) to simulate realistic flight paths, including crossrange maneuvers and yaw adjustments.
+​Advanced Visualization: Utilized Matplotlib's 3D toolkit to provide a 360-degree view of the missile's ascent, cruise, and terminal phases.
+​Real-time Vector Analysis: Calculates velocity and acceleration across three dimensions, ensuring higher fidelity in interceptor avoidance scenarios.
