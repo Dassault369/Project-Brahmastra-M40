@@ -1,0 +1,90 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# --- PROJECT BRAHMASTRA: PHASE 6 (TARGET LOCK & STEALTH) ---
+
+# 1. Configuration & Mission Parameters
+v0 = 13600.0          # Mach 40 speed (m/s)
+initial_angle = 35.0  
+m = 1500.0            # Missile mass (kg)
+Cd = 0.15             # Drag Coefficient
+A = 0.8               
+dt = 0.1              
+MAX_SAFE_TEMP = 25000 # AI Governor Threshold (K)
+
+# Target Parameters
+target_x = 2500.0     # ലക്ഷ്യം 2500 km ദൂരെ
+target_locked = False
+
+# Stealth Parameters
+BASE_RCS = 0.01       # Radar Cross Section (Lower is better)
+
+# Initializing Flight
+vx = v0 * np.cos(np.radians(initial_angle))
+vy = v0 * np.sin(np.radians(initial_angle))
+x, y = 0.0, 0.0
+current_angle = initial_angle
+
+# Data Logging
+x_pos, y_pos, temperatures, rcs_log = [0], [0], [300], [BASE_RCS]
+
+# 2. Simulation Loop (Mission Execution)
+while y >= 0:
+    v = np.sqrt(vx**2 + vy**2)
+    rho = 1.225 * np.exp(-y / 8500.0) # Atmospheric density
+    drag = 0.5 * rho * v**2 * Cd * A
+    
+    # Aerodynamic Heating
+    mach = v / 340
+    temp = 300 * (1 + 0.18 * mach**2)
+    
+    # --- AI & STEALTH LOGIC ---
+    # Radar Visibility based on current flight angle
+    current_rcs = BASE_RCS * np.abs(np.cos(np.radians(current_angle)))
+    
+    # AI Governor for Thermal Safety
+    if temp > MAX_SAFE_TEMP and y < 50000:
+        current_angle += 0.5 # Climb to lower density air
+        v *= 0.99 
+        vx = v * np.cos(np.radians(current_angle))
+        vy = v * np.sin(np.radians(current_angle))
+    
+    # --- TARGET PRECISION CHECK ---
+    if abs(x/1000 - target_x) < 5 and not target_locked:
+        print(f"CRITICAL: Target detected at {x/1000:.2f} km. BRAHMASTRA Locked!")
+        target_locked = True
+    
+    # Update Physics
+    ax = -(drag * (vx / v)) / m
+    ay = -9.81 - (drag * (vy / v)) / m
+    
+    vx += ax * dt
+    vy += ay * dt
+    x += vx * dt
+    y += vy * dt
+    
+    if y >= 0:
+        x_pos.append(x / 1000)
+        y_pos.append(y / 1000)
+        temperatures.append(temp)
+        rcs_log.append(current_rcs)
+
+# 3. Save Final Mission Data
+df = pd.DataFrame({'Dist_km': x_pos, 'Alt_km': y_pos, 'RCS_m2': rcs_log})
+df.to_csv('Brahmastra_Precision_Strike.csv', index=False)
+
+# 4. Visualization
+plt.figure(figsize=(12, 6))
+plt.plot(x_pos, y_pos, color='red', label='Brahmastra Trajectory')
+plt.axvline(x=target_x, color='black', linestyle='--', label='Target Zone')
+plt.scatter(target_x, 0, color='black', marker='X', s=100) # Target point
+plt.title("PROJECT BRAHMASTRA: Precision Strike Simulation")
+plt.xlabel("Distance (km)")
+plt.ylabel("Altitude (km)")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+if target_locked:
+    print("MISSION SUCCESS: Target Eliminated at Mach 40.")
