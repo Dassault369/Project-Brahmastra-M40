@@ -30,3 +30,19 @@ key features:
 ​Real-time Vector Analysis: Calculates velocity and acceleration across three dimensions, ensuring higher fidelity in interceptor avoidance scenarios.
 
 ​💻 C-Language Implementation: > High-performance version of the simulation developed in C for embedded system logic, featuring real-time interceptor evasion.
+
+​🚀 Advanced Propulsion & System Design
+
+​1. Scramjet Engine Integration (Supersonic Combustion)
+​Technology: Supersonic Combustion Ramjet (Scramjet).
+​Operational Velocity: Optimized for Mach 40+ atmospheric transit.
+​Mechanism: Unlike conventional Ramjets, the intake air remains at supersonic speeds throughout the combustion chamber, allowing for sustained hypersonic flight without heavy rotating parts.
+​Fuel System: Utilizing high-energy synthetic fuels with Regenerative Cooling to manage the extreme thermal loads on the engine walls.
+
+​2. Thermal Protection System (TPS)
+​Nose Cone & Edges: Reinforced with Carbon-Carbon Composites and Ultra-High Temperature Ceramics (UHTCs) to withstand aero-heating exceeding 2500°C.
+​Ablative Shielding: Strategic use of ablative materials to dissipate heat during the terminal re-entry phase.
+
+​3. Stealth & Aero-Dynamics
+​Wafer-Shape Airframe: Designed to minimize Radar Cross Section (RCS) while maintaining high lift-to-drag ratio at hypersonic speeds.
+​Plasma Stealth Management: Analysis of the ionization layer formed at Mach 40 to enhance signal absorption and radar masking.
