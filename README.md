@@ -51,3 +51,15 @@ key features:
 ​Advanced Weapon System Design & Trajectory Modeling
 ​🎯 Mission Objective
 ​To simulate a Mach 40+ hypersonic cruise vehicle capable of global reach, featuring autonomous interceptor evasion and thermal-stable flight dynamics.
+
+🧬 Internal Architecture
+​Guidance Unit: Real-time navigation and flight control board.
+​Fuel Storage: Cryogenic Hydrogen tanks acting as primary coolant.
+​Scramjet Core: Supersonic intake and combustion chamber for extreme thrust.
+​TPS Layer: Carbon-Carbon composite shielding for 2500°C+ environments.
+​📊 Performance Visualization
+​3D Trajectory: Simulated spatial dynamics in Python using Matplotlib 3D.
+​Evasion Logic: C-Language implementation of randomized zig-zag maneuvers to bypass missile defense systems.
+​💻 Code Stack
+​Python: 3D Visualization and Physical Modeling.
+​C Language: High-performance system logic and flight governor.
