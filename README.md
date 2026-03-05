@@ -46,3 +46,8 @@ key features:
 ​3. Stealth & Aero-Dynamics
 ​Wafer-Shape Airframe: Designed to minimize Radar Cross Section (RCS) while maintaining high lift-to-drag ratio at hypersonic speeds.
 ​Plasma Stealth Management: Analysis of the ionization layer formed at Mach 40 to enhance signal absorption and radar masking.
+
+​🚀 Project Brahmastra: Mach 40 Hypersonic Simulation
+​Advanced Weapon System Design & Trajectory Modeling
+​🎯 Mission Objective
+​To simulate a Mach 40+ hypersonic cruise vehicle capable of global reach, featuring autonomous interceptor evasion and thermal-stable flight dynamics.
