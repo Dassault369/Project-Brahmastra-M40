@@ -65,3 +65,25 @@ key features:
 ​💻 Code Stack
 ​Python: 3D Visualization and Physical Modeling.
 ​C Language: High-performance system logic and flight governor.
+
+​Project Abstract: BRAHMASTRA
+
+​Title: Advanced Missile Trajectory Simulation & Autonomous Weapon System Guidance Logic
+
+​1. Executive Summary
+​Project Brahmastra is a high-fidelity computational simulation environment designed to model next-generation missile dynamics. The project focuses on two critical defense challenges: Precision Guidance and Counter-Interception Maneuvers. By integrating advanced stealth logic and autonomous trajectory correction, it provides a robust framework for testing missile behaviors in contested airspace.
+
+​2. Problem Statement
+​Modern Integrated Air Defense Systems (IADS) are increasingly capable of intercepting standard ballistic and cruise missiles. To maintain a strategic edge, there is an urgent need for indigenous software solutions that can simulate and optimize Evasive Maneuvers and Non-Linear Trajectories to bypass enemy radar and interceptors.
+
+​3. Technical Innovation
+​The simulation leverages a custom-built propulsion and drag model to calculate real-time flight paths. Key technical features include:
+​Stealth Path Optimization: Logic to minimize radar cross-section exposure during the terminal phase.
+​Dynamic Evasion Algorithms: Real-time trajectory shifting to counter incoming surface-to-air missiles (SAMs).
+​Target Precision Logic: High-accuracy hit probability even under high-G maneuvering conditions.
+
+​4. Impact & Utility
+​This project serves as a foundational tool for:
+​Virtual Prototyping: Reducing the cost of physical trials by simulating complex flight scenarios.
+​Strategic Planning: Helping defense analysts predict missile performance against varying defensive grids.
+​Indigenization: A completely homegrown codebase aligned with the 'Atmanirbhar Bharat' vision in defense technology.
