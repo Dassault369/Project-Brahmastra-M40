@@ -1,0 +1,52 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 1. പ്രാരംഭ സജ്ജീകരണങ്ങൾ (Initial Conditions)
+m_pos = np.array([0.0, 0.0])    # മിസൈലിന്റെ തുടക്ക സ്ഥാനം
+t_pos = np.array([5000.0, 2000.0]) # ടാർഗെറ്റിന്റെ സ്ഥാനം (5km away, 2km high)
+
+m_vel_mag = 800.0  # മിസൈലിന്റെ വേഗത (m/s) - ഏകദേശം Mach 2.3
+t_vel = np.array([-50.0, 10.0])   # ടാർഗെറ്റിന്റെ വേഗത (m/s)
+
+N = 3.0 # Navigation Constant (സാധാരണയായി 3 നും 5 നും ഇടയിൽ)
+dt = 0.05 # Time step (സെക്കൻഡിൽ)
+
+m_path = [m_pos.copy()]
+t_path = [t_pos.copy()]
+
+# 2. സിമുലേഷൻ ലൂപ്പ്
+for i in range(1000):
+    # മിസൈലും ടാർഗെറ്റും തമ്മിലുള്ള ദൂരവും ആംഗിളും (Line of Sight - LOS)
+    rel_pos = t_pos - m_pos
+    dist = np.linalg.norm(rel_pos)
+    los_angle = np.arctan2(rel_pos[1], rel_pos[0])
+    
+    # ടാർഗെറ്റ് ഹിറ്റ് ആയാൽ നിർത്തുക
+    if dist < 10:
+        print(f"Target Destroyed at {i*dt:.2f} seconds!")
+        break
+        
+    # മിസൈലിന്റെ വേഗതയുടെ ദിശ നിശ്ചയിക്കുന്നു (PN Logic)
+    # ഇവിടെ ലളിതമായ രൂപത്തിൽ ടാർഗെറ്റിനെ ലക്ഷ്യം വെക്കുന്നു
+    m_vel = m_vel_mag * np.array([np.cos(los_angle), np.sin(los_angle)])
+    
+    # സ്ഥാനങ്ങൾ അപ്ഡേറ്റ് ചെയ്യുന്നു
+    m_pos += m_vel * dt
+    t_pos += t_vel * dt
+    
+    m_path.append(m_pos.copy())
+    t_path.append(t_pos.copy())
+
+# 3. വിഷ്വലൈസേഷൻ (Graph)
+m_path = np.array(m_path)
+t_path = np.array(t_path)
+
+plt.figure(figsize=(10, 5))
+plt.plot(m_path[:,0], m_path[:,1], label='Missile Path (Brahmastra)', color='red', linewidth=2)
+plt.plot(t_path[:,0], t_path[:,1], label='Target Path', color='blue', linestyle='--')
+plt.title('Missile Interception Simulation')
+plt.xlabel('Distance (m)')
+plt.ylabel('Altitude (m)')
+plt.legend()
+plt.grid(True)
+plt.show()
